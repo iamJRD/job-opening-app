@@ -19,15 +19,15 @@
                     <form action='/view_jobs'>
                         <div class='form-group'>
                           <label for='jobTitle'> Job Title</label>
-                          <input id='jobTitle' name='jobTitle' class='form-control' type='text'>
+                          <input id='jobTitle' name='jobTitle' class='form-control' type='text' required>
                           <label for='jobDescription'> Job Description</label>
-                          <input id='jobDescription' name='jobDescription' class='form-control' type='text'>
+                          <input id='jobDescription' name='jobDescription' class='form-control' type='text' required>
                           <label for='contactName'> Contact Name</label>
-                          <input id='contactName' name='contactName' class='form-control' type='text'>
+                          <input id='contactName' name='contactName' class='form-control' type='text' required>
                           <label for='contactEmail'> Contact Email</label>
-                          <input id='contactEmail' name='contactEmail' class='form-control' type='text'>
+                          <input id='contactEmail' name='contactEmail' class='form-control' type='email' required>
                           <label for='phoneNumber'> Contact Phone Number</label>
-                          <input id='phoneNumber' name='phoneNumber' class='form-control' type='text'>
+                          <input id='phoneNumber' name='phoneNumber' class='form-control' type='tel' required>
                         </div>
                         <button type='submit' class='btn-success'>Submit</button>
                     </form>
