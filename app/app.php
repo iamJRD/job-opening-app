@@ -55,8 +55,10 @@
             <div class='container'>
                 <h1>" . $title . "</h1>
                 <p>" . $description . "</p>
-                <p> Contact: " . $currentContact->getContactName() . "<br>
-                at <a href='mailto:" . $currentContact->getContactEmail() . "'> this email address</a></p>
+                <p> Contact: </p>
+                <ul>
+                    <li>Email Contact: <a href='mailto:" . $currentContact->getContactEmail() . "'>" . $currentContact->getContactName() . "</a></li>
+                    <li>Phone Contact: " . $currentContact->getPhoneNumber() . "</li>
             </div>
         </body>
         </html>
