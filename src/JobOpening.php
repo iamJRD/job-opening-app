@@ -3,15 +3,13 @@
   {
       private $title;
       private $description;
-      private $contact_name;
-      private $contact_email;
+      private $contactInfo;
 
-      function __construct ($title, $description, $contact_name, $contact_email)
+      function __construct($title, $description, $contactInfo = NULL)
       {
           $this->title = $title;
           $this->description = $description;
-          $this->contact_name = $contact_name;
-          $this->contact_email = $contact_email;
+          $this->ContactInfo = $contactInfo;
       }
 
       function setTitle($new_title)
@@ -32,23 +30,13 @@
           return $this->description;
       }
 
-      function setContactName($new_contact_name)
+      function setContactInfo($new_ContactInfo)
       {
-          $this->contact_name = $new_contact_name;
+          $this->ContactInfo = $new_ContactInfo;
       }
-      function getContactName()
+      function getContactInfo()
       {
-          return $this->contact_name;
+          return $this->ContactInfo;
       }
-
-      function setContactEmail($new_contact_email)
-      {
-          $this->contact_email = $new_contact_email;
-      }
-      function getContactEmail()
-      {
-          return $this->contact_email;
-      }
-
   }
- ?>
+?>

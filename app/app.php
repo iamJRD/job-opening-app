@@ -1,6 +1,7 @@
 <?php
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/JobOpening.php";
+    require_once __DIR__."/../src/ContactInfo.php";
 
     $app = new Silex\Application();
 
@@ -25,6 +26,8 @@
                           <input id='contactName' name='contactName' class='form-control' type='text'>
                           <label for='contactEmail'> Contact Email</label>
                           <input id='contactEmail' name='contactEmail' class='form-control' type='text'>
+                          <label for='phoneNumber'> Contact Phone Number</label>
+                          <input id='phoneNumber' name='phoneNumber' class='form-control' type='text'>
                         </div>
                         <button type='submit' class='btn-success'>Submit</button>
                     </form>
@@ -35,7 +38,11 @@
     });
 
     $app->get("/view_jobs", function() {
-        $newOpening = new JobOpening($_GET['jobTitle'], $_GET['jobDescription'], $_GET['contactName'], $_GET['contactEmail']);
+        $newOpening = new JobOpening($_GET['jobTitle'], $_GET['jobDescription'], new ContactInfo($_GET['contactName'], $_GET['contactEmail'], $_GET['phoneNumber']));
+
+        $title = $newOpening->getTitle();
+        $description = $newOpening->getDescription();
+        $currentContact = $newOpening->getContactInfo();
 
         return "
         <!DOCTYPE html>
@@ -46,10 +53,10 @@
         </head>
         <body>
             <div class='container'>
-                <h1>" . $newOpening->getTitle() . "</h1>
-                <p>" . $newOpening->getDescription() . "</p>
-                <p> Contact: " . $newOpening->getContactName() . "<br>
-                at <a href='mailto:" . $newOpening->getContactEmail() . "'> this email address</a></p>
+                <h1>" . $title . "</h1>
+                <p>" . $description . "</p>
+                <p> Contact: " . $currentContact->getContactName() . "<br>
+                at <a href='mailto:" . $currentContact->getContactEmail() . "'> this email address</a></p>
             </div>
         </body>
         </html>
