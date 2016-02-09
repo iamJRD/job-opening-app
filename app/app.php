@@ -3,9 +3,39 @@
     require_once __DIR__."/../src/JobOpening.php";
     require_once __DIR__."/../src/ContactInfo.php";
 
+    session_start();
+    if(empty($_SESSION['list_of_jobs'])){
+        $_SESSION['list_of_jobs'] = array();
+    }
+
     $app = new Silex\Application();
 
     $app->get("/", function(){
+
+        $output = "";
+
+        $all_jobs = JobOpening::getAll();
+
+        if (!empty($all_jobs)){
+            $output .="
+                <h1>Here Are Jobs!</h1>
+                <ul>";
+
+            foreach ($all_jobs as $job) {
+                $output .= "<li>" . $job->getTitle() . "</li>";
+            }
+        }
+
+        foreach (JobOpening::getAll() as $job) {
+            $output .= "<div class='container'>
+                <h1>" . $job->getTitle() . "</h1>
+                <p>" . $job->getDescription() . "</p>
+                <p> Contact: </p>
+                <ul>
+                    <li>Email Contact: <a href='mailto:" . $currentContact->getContactEmail() . "'>" . $currentContact->getContactName() . "</a></li>
+                    <li>Phone Contact: " . $currentContact->getPhoneNumber() . "</li>
+            </div>";
+        }
         return "
        <!DOCTYPE html>
        <html>

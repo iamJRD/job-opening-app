@@ -38,5 +38,15 @@
       {
           return $this->ContactInfo;
       }
+
+      function saveJob()
+      {
+          array_push($_SESSION['list_of_jobs'], $this);
+      }
+
+      static function getAll()
+      {
+          return $_SESSION['list_of_jobs'];
+      }
   }
 ?>
