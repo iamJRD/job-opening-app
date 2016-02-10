@@ -32,14 +32,7 @@
             }
         }
 
-        foreach (JobOpening::getAll() as $job) {
-            $output .= "<div class='container'>
-                <h1>" . $job->getTitle() . "</h1>
-                <p>" . $job->getDescription() . "</p>
-                <p> Contact: </p>
-                <ul>
-                    <li>Email Contact: <a href='mailto:" . $currentContact->getContactEmail() . "'>" . $currentContact->getContactName() . "</a></li>
-                    <li>Phone Contact: " . $currentContact->getPhoneNumber() . "</li>
+        
             </div>";
         }
         return "
