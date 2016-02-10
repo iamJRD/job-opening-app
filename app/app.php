@@ -18,11 +18,17 @@
 
         if (!empty($all_jobs)){
             $output .="
-                <h1>Here Are Jobs!</h1>
-                <ul>";
+                <h1>Here Are Jobs!</h1>"
 
             foreach ($all_jobs as $job) {
-                $output .= "<li>" . $job->getTitle() . "</li>";
+                $output .= "<div class='container'>
+                    <h1>" . $title . "</h1>
+                    <p>" . $description . "</p>
+                    <p> Contact: </p>
+                    <ul>
+                        <li>Email Contact: <a href='mailto:" . $currentContact->getContactEmail() . "'>" . $currentContact->getContactName() . "</a></li>
+                        <li>Phone Contact: " . $currentContact->getPhoneNumber() . "</li>
+                </div>
             }
         }
 
