@@ -17,6 +17,7 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
+* Run `composer install` in the project's home directory
 * Start MAMP
 * In your web browser, go to `localhost:8889` to view the app
 
